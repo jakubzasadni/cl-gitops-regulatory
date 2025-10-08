@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{MODEL}}-regulator
+  name: dwa-zbiorniki-regulator
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{MODEL}}-regulator
+      app: dwa-zbiorniki-regulator
   template:
     metadata:
       labels:
-        app: {{MODEL}}-regulator
+        app: dwa-zbiorniki-regulator
     spec:
       containers:
         - name: regulator
-          image: ghcr.io/jzasadni/{{MODEL}}-regulator:latest
+          image: ghcr.io/jzasadni/dwa-zbiorniki-regulator:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
