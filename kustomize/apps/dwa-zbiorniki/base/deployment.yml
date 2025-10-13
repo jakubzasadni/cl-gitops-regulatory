@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: regulator
-          image: ghcr.io/jakubzasadni/dwa_zbiorniki-regulator:latest
+          image: ghcr.io/jakubzasadni/dwa-zbiorniki-regulator:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
