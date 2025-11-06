@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: regulator
-          image: ghcr.io/jakubzasadni/wahadlo_odwrocone-regulator:latest
+          image: ghcr.io/jakubzasadni/wahadlo-odwrocone-regulator:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

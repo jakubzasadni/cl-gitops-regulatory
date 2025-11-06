@@ -19,16 +19,16 @@ spec:
         metrics.Mp: '0.0'
     spec:
       containers:
-      - name: regulator
-        image: ghcr.io/jakubzasadni/zbiornik-1rz-regulator:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        volumeMounts:
-        - name: config
-          mountPath: /app/config
-          readOnly: true
+        - name: regulator
+          image: ghcr.io/jakubzasadni/zbiornik-1rz-regulator:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+              readOnly: true
       volumes:
-      - name: config
-        configMap:
-          name: zbiornik-1rz-config
+        - name: config
+          configMap:
+            name: zbiornik-1rz-config
