@@ -19,16 +19,8 @@ spec:
         metrics.Mp: '0.0'
     spec:
       containers:
-      - name: regulator
-        image: ghcr.io/jakubzasadni/wahadlo_odwrocone-regulator:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        volumeMounts:
-        - name: config
-          mountPath: /app/config
-          readOnly: true
-      volumes:
-      - name: config
-        configMap:
-          name: wahadlo-odwrocone-config
+        - name: regulator
+          image: ghcr.io/jakubzasadni/wahadlo_odwrocone-regulator:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
