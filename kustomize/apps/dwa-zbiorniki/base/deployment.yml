@@ -11,10 +11,24 @@ spec:
     metadata:
       labels:
         app: dwa-zbiorniki-regulator
+      annotations:
+        regulator.type: regulator_pd
+        tuning.method: ziegler_nichols
+        updated.at: '2025-11-06T11:04:04.962956'
+        metrics.IAE: '3.0647047552808995'
+        metrics.Mp: '19.280233625405582'
     spec:
       containers:
-        - name: regulator
-          image: ghcr.io/jakubzasadni/dwa-zbiorniki-regulator:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 8080
+      - name: regulator
+        image: ghcr.io/jakubzasadni/dwa-zbiorniki-regulator:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: config
+          mountPath: /app/config
+          readOnly: true
+      volumes:
+      - name: config
+        configMap:
+          name: dwa-zbiorniki-config

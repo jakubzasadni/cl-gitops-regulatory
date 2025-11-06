@@ -11,10 +11,24 @@ spec:
     metadata:
       labels:
         app: zbiornik-1rz-regulator
+      annotations:
+        regulator.type: regulator_pd
+        tuning.method: siatka
+        updated.at: '2025-11-06T11:04:04.931216'
+        metrics.IAE: '0.24947585062383756'
+        metrics.Mp: '0.0'
     spec:
       containers:
-        - name: regulator
-          image: ghcr.io/jakubzasadni/zbiornik-1rz-regulator:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 8080
+      - name: regulator
+        image: ghcr.io/jakubzasadni/zbiornik-1rz-regulator:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: config
+          mountPath: /app/config
+          readOnly: true
+      volumes:
+      - name: config
+        configMap:
+          name: zbiornik-1rz-config

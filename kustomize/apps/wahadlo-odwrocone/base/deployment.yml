@@ -11,10 +11,24 @@ spec:
     metadata:
       labels:
         app: wahadlo-odwrocone-regulator
+      annotations:
+        regulator.type: regulator_pd
+        tuning.method: siatka
+        updated.at: '2025-11-06T11:04:04.995040'
+        metrics.IAE: '0.0007133130509402729'
+        metrics.Mp: '0.0'
     spec:
       containers:
-        - name: regulator
-          image: ghcr.io/jakubzasadni/wahadlo_odwrocone-regulator:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 8080
+      - name: regulator
+        image: ghcr.io/jakubzasadni/wahadlo_odwrocone-regulator:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: config
+          mountPath: /app/config
+          readOnly: true
+      volumes:
+      - name: config
+        configMap:
+          name: wahadlo-odwrocone-config

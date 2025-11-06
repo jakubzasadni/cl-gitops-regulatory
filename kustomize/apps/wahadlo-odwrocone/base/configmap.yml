@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wahadlo-odwrocone-config
+  labels:
+    app: wahadlo-odwrocone-regulator
+    updated: 20251106-110404
+data:
+  parametry.json: "{\n  \"regulator\": \"regulator_pd\",\n  \"metoda\": \"siatka\"\
+    ,\n  \"parametry\": {\n    \"Kp\": 8.0,\n    \"Ti\": null,\n    \"Td\": 0.1\n\
+    \  }\n}"
