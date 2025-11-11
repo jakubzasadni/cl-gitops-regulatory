@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{MODEL}}-svc
+  name: zbiornik-1rz
 spec:
   selector:
-    app: {{MODEL}}-regulator
+    app: zbiornik-1rz-regulator
   ports:
     - name: http
-      port: 8080
+      port: 80
       targetPort: 8080
-  type: ClusterIP
+  type: NodePort
